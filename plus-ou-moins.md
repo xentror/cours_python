@@ -8,7 +8,8 @@ Le but est de coder un fonction qui va générer un int aléatoire entre 0 et 10
 
 Voici le prototype de la fonction:
 
-```guess_me():
+```
+guess_me():
         "-> boolean"
 ```
 
@@ -34,7 +35,7 @@ Une fois nombre aléatoire généré et stocké, nous allons demander au joueur 
 Mais attention cette entré est récupéré sous la forme d'une string, vous allez donc devoir la caster en integer avant de la sauvegarder.
     Attention à ce que le nombre soit bien entre 0 et 100 sinon le joueur aura du mal à trouver votre nombre généré.
 
-```n = int(input("Entrz votre essais : "))```
+```n = int(input("Entrez votre essais : "))```
 
 ### Quelques indications:
 
@@ -58,3 +59,59 @@ Une petite features sympas et très simple, un compteur d'essais que vous devrez
 ### Et la politesse alors ...
 
 Un petit message de bienvenue et d'au revoir, grace à print serait également le bienvenue.
+
+## Une DataBase pour retenir les scores:
+
+### JSON
+
+Afin de stocké les scores, même une fois le programme arrêter nous allons devoir, les mettre dans un fichier. Plusieurs formats peuvent être utilisés pour cela, comme le JSON, le CSV, le yaml. Mais pour ce sujet vous devrez utiliser du JSON.
+
+```import JSON```
+
+Vous aurez besoin des fonctions suivantes pour recupérer et stocké un dictionnaire en JSON:
+
+
+1. Pour récupérer les donnés présente dans le fichier:
+```
+with open(filename, 'r') as f:
+    data = json.load(f)
+```
+
+2. Pour écrire les donnés dans le fichier:
+```
+with open(filename, 'w+', encoding = utf-8) as f:
+    data = json.dump(data, f, indent = 4)
+```
+
+Attention à bien vérifier que la donné soit valide et que le fichier voulu existe avant de la charger.
+Dans le cas où le fichier n'existe pas encore, la variable data sera initialisé avec les valeurs suivantes:
+
+```
+{
+    "players": []
+}
+```
+
+Le JSON doit contenir un objet players contenant une liste d'objets avec dedans:
+
+1. Le nom du joueur
+2. Son meilleur score
+3. Som pire score
+
+Voici un exemple d'un fichier valide voulu :
+
+```
+{
+    "players": [
+        {
+            "name": "Alexandre",
+            "Best Score": 3,
+            "Worst Score" 9
+        }, {
+            "name": "Léa",
+            "Best Score": 4,
+            "Worst Score": 5
+        }
+    ]
+}
+```
