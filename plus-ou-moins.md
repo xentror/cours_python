@@ -1,14 +1,16 @@
-# Plus ou moins:
+Plus ou moins:
+=============
 
 Nous voici enfin a un exercice intéressant et surtout intéractif:
 Vous avez surement déjà joué ou alors au moins entendu parler du jeux chaud ou froid, nous allons faire une version un peu différente de ce jeux appelé plus ou moins.
+
 ## Le corps du programme: GuessMe
 
 Le but est de coder un fonction qui va générer un int aléatoire entre 0 et 100, et nous devrons le deviner en émettant des hypothèses via stdin. Notre algorithme devra nous donner des indices en nous indicant si le nombre généré est supérieur, inférieur, ou égale à celui-ci que venons de rentrer dans notre programme.
 
 Voici le prototype de la fonction:
 
-```
+```python
 guess_me():
         "-> boolean"
 ```
@@ -19,13 +21,17 @@ Une fois le bon chiffre trouver, la fonction va demander au joueurs si celui-ci 
 
 Pour générer le nombre aléatoire vous devrez importer et utiliser la bibliothèque random.
 
-```import random```
+```python
+import random
+```
 
 Nous pouvons utiliser la fonction randrange(min, max, step) de cette bibliothèque, pour générer notre nombre aléatoire.
 
 Un peu de réalisme, afin de rajouter un peu de réalisme, nous pouvons simuler en temps d'attente pendant la génération du nombre aléatoire. Car celle-ci est instanté nous allons utiliser la fonction sleep de la bibliothèque time qui va stopper l'exécution du programme pendant un nombre de seconde donné en argument.
 
-```from time import sleep```
+```python
+from time import sleep
+```
 
 Un temps d'attente d'une seconde suffit largement le but n'étant pas non plus d'ennuyer le joueur.
 
@@ -35,7 +41,9 @@ Une fois nombre aléatoire généré et stocké, nous allons demander au joueur 
 Mais attention cette entré est récupéré sous la forme d'une string, vous allez donc devoir la caster en integer avant de la sauvegarder.
     Attention à ce que le nombre soit bien entre 0 et 100 sinon le joueur aura du mal à trouver votre nombre généré.
 
-```n = int(input("Entrez votre essais : "))```
+```python
+n = int(input("Entrez votre essais : "))
+```
 
 ### Quelques indications:
 
@@ -66,19 +74,21 @@ Un petit message de bienvenue et d'au revoir, grace à print serait également l
 
 Afin de stocker les scores, même une fois le programme arrêté nous allons devoir, les mettre dans un fichier. Plusieurs formats peuvent être utilisés pour cela, comme le JSON, le CSV, le YAML. Mais pour ce sujet vous devrez utiliser du JSON.
 
-```import JSON```
+```python
+import JSON
+```
 
 Vous aurez besoin des fonctions suivantes pour recupérer et stocké un dictionnaire en JSON:
 
 
 1. Pour récupérer les donnés présente dans le fichier:
-```
+```python
 with open(filename, 'r') as f:
     data = json.load(f)
 ```
 
 2. Pour écrire les donnés dans le fichier:
-```
+```python
 with open(filename, 'w+', encoding = utf-8) as f:
     data = json.dump(data, f, indent = 4)
 ```
@@ -88,13 +98,13 @@ Dans le cas où le fichier n'existe pas encore, la variable data sera initialis�
 Pour cela vous pourrez utiliser la fonction suivante qui renvoie une liste des
 fichiers présent dans le dossier courant.
 
-```
+```python
     import os
 
     files = os.listdir()
 ```
 
-```
+```json
 {
     "players": []
 }
@@ -108,13 +118,13 @@ Le JSON doit contenir un objet players contenant une liste d'objets avec dedans:
 
 Voici un exemple d'un fichier valide voulu :
 
-```
+```json
 {
     "players": [
         {
             "name": "Alexandre",
             "Best Score": 3,
-            "Worst Score" 9
+            "Worst Score": 9
         }, {
             "name": "Léa",
             "Best Score": 4,
@@ -137,7 +147,7 @@ Il doit également contenir les fonctions suivantes:
 
 Celle-ci va essayer de charger les données contenus dans le fichier et les stockés dans une variable.
 
-```
+```python
 __init___(self)
 ```
 
@@ -145,7 +155,7 @@ __init___(self)
 
 Cette fonction va ajouter un joueur dans la liste des joueurs, en mettant les champs "Best Scores" et "Worst Scores" à None.
 
-```
+```python
 add_player(self, name)
 ```
 
@@ -153,7 +163,7 @@ add_player(self, name)
 
 Cette fonction va parcourir la liste de joueurs et va retourner True si le joueur demandé est présent dans celle-ci et False dans l'autre cas.
 
-```
+```python
 find_player(self,name)
 ```
 
@@ -161,7 +171,7 @@ find_player(self,name)
 
 Cette fonction va rajouter un score pour un joueur donné. Celui-ci doit remplacer le best score actuel si il est plus petit et remplacer le worst score si il est plusgrand.
 
-```
+```python
 add_score(self, player_name, score)
 ```
 
@@ -171,7 +181,7 @@ Attention pendant les comparaisons, les deux variables doivent être de même ty
 
 Cette fonction sera appelé avant de quitter votre programme et à pour but d'écrire les données dans le fichiers JSON comme indiqué plus haut dans le sujet.
 
-```
+```python
 store(self)
 ```
 
@@ -187,8 +197,31 @@ Voici tes scores [Nom du Joueur]:
 
 Elle a le prototype suivant:
 
-```
+```python
 print_player(self, player_name)
 ```
 
+### Un peu d'intéractivité:
 
+Maitenant que la classe DataBase est prête nous allons pouvoir l'utiliser.
+Pour cela, vous devrez créer un objet de type DataBase de la façon suivante:
+
+```python
+database = DataBase()
+```
+
+Une fois ceci fais vous pouvez demander au joueur d'entré son nom et de vérifier si celui-ci est déjà dans la base de donné.
+Si c'est le cas, dites lui bonjour avec un petit message personnalisé.
+Sinon, dites lui quand même bonjour, et expliquez lui les règles du jeu.
+
+Attention, n'oubliez pas d'afficher les scores de votre joueur avant de quitter l programme !
+
+### Bonus, un écran un peu plus clair:
+
+En dernier, et histoire de faire un petit bonus. Je vais vous demander de trouver un moyen d'effacer tout ce qu'il y a sur vôtre écran avant de commencer le jeu, afin de ne plus avoir le shell présent par exemple.
+
+Un petit indice, vous devez utilisez une fonction présente dans la bibliothèque **os**.
+
+Vous pouvez également effacer le texte avant chaque récriture dans la console afin de donné un peu plus de sérieux à votre jeu.
+
+# BONNE CHANCE !!!
