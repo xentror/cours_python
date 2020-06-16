@@ -99,9 +99,9 @@ Pour cela vous pourrez utiliser la fonction suivante qui renvoie une liste des
 fichiers présent dans le dossier courant.
 
 ```python
-    import os
+import os
 
-    files = os.listdir()
+files = os.listdir()
 ```
 
 ```json
