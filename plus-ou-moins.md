@@ -214,7 +214,7 @@ Une fois ceci fais vous pouvez demander au joueur d'entré son nom et de vérifi
 Si c'est le cas, dites lui bonjour avec un petit message personnalisé.
 Sinon, dites lui quand même bonjour, et expliquez lui les règles du jeu.
 
-Attention, n'oubliez pas d'afficher les scores de votre joueur avant de quitter l programme !
+Attention, n'oubliez pas d'afficher les scores de votre joueur avant de quitter le programme !
 
 ### Bonus, un écran un peu plus clair:
 
