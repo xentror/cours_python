@@ -64,7 +64,7 @@ Un petit message de bienvenue et d'au revoir, grace à print serait également l
 
 ### JSON
 
-Afin de stocké les scores, même une fois le programme arrêter nous allons devoir, les mettre dans un fichier. Plusieurs formats peuvent être utilisés pour cela, comme le JSON, le CSV, le yaml. Mais pour ce sujet vous devrez utiliser du JSON.
+Afin de stocker les scores, même une fois le programme arrêté nous allons devoir, les mettre dans un fichier. Plusieurs formats peuvent être utilisés pour cela, comme le JSON, le CSV, le YAML. Mais pour ce sujet vous devrez utiliser du JSON.
 
 ```import JSON```
 
@@ -85,6 +85,14 @@ with open(filename, 'w+', encoding = utf-8) as f:
 
 Attention à bien vérifier que la donné soit valide et que le fichier voulu existe avant de la charger.
 Dans le cas où le fichier n'existe pas encore, la variable data sera initialisé avec les valeurs suivantes:
+Pour cela vous pourrez utiliser la fonction suivante qui renvoie une liste des
+fichiers présent dans le dossier courant.
+
+```
+    import os
+
+    files = os.listdir()
+```
 
 ```
 {
@@ -115,3 +123,72 @@ Voici un exemple d'un fichier valide voulu :
     ]
 }
 ```
+
+### Une petit scoreboard:
+
+Le but ici est de stocker sous forme de json, une liste contenant le nom des joueurs avec leurs pires et meilleures scores.
+
+Pour cela nous allons créer une classe appelé DataBase. Celle-ci doit contenir un
+attribut filename contenant le path relatif du fichiers où sont stocké les données.Ainsi qu'un dictionnaire **Datas** qui va contenir les donnés JSON chargés en mémoire.
+
+Il doit également contenir les fonctions suivantes:
+
+1. la fonction d'init:
+
+Celle-ci va essayer de charger les données contenus dans le fichier et les stockés dans une variable.
+
+```
+__init___(self)
+```
+
+2. Ajout d'un joueur:
+
+Cette fonction va ajouter un joueur dans la liste des joueurs, en mettant les champs "Best Scores" et "Worst Scores" à None.
+
+```
+add_player(self, name)
+```
+
+3. Trouver un joueur:
+
+Cette fonction va parcourir la liste de joueurs et va retourner True si le joueur demandé est présent dans celle-ci et False dans l'autre cas.
+
+```
+find_player(self,name)
+```
+
+4. Ajoute un score:
+
+Cette fonction va rajouter un score pour un joueur donné. Celui-ci doit remplacer le best score actuel si il est plus petit et remplacer le worst score si il est plusgrand.
+
+```
+add_score(self, player_name, score)
+```
+
+Attention pendant les comparaisons, les deux variables doivent être de même types (casts explicites).
+
+5. Sauvegarde les données:
+
+Cette fonction sera appelé avant de quitter votre programme et à pour but d'écrire les données dans le fichiers JSON comme indiqué plus haut dans le sujet.
+
+```
+store(self)
+```
+
+6. Affichage des scores:
+
+Cette fonction va servir à afficher les scores d'un joueur de la façon suivante:
+
+```
+Voici tes scores [Nom du Joueur]:
+    Best Score: 1
+    Worst Score: 38
+```
+
+Elle a le prototype suivant:
+
+```
+print_player(self, player_name)
+```
+
+
