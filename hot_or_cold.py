@@ -94,9 +94,13 @@ def guess_me(database, player_name):
 # Clear l'écran avant d'aficher le jeu
 _ = system("clear")
 
+# Create database object
 database = DataBase()
+
+# Start Game
 print("Salut ! Bienvenue sur 'Guess me':\n")
 
+# Get Player name
 player_name = input("Avant de commencer quel est ton nom ? ")
 print("")
 
@@ -110,9 +114,13 @@ else:
     print("Mais ne t'inquiète pas je vais te donner des indications ;)\n")
     print("C'est parti ! Commençons !")
 
+# Commence le jeu
 while guess_me(database, player_name):
     continue;
 
+# Affiche les scores du joueurs
 database.print_player(player_name)
 database.store()
+
+# Bye Bye
 print("\nC'était Super ! A une prochaine fois !");
