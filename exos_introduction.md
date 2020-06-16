@@ -30,9 +30,9 @@ Attention vous ne devez prendre en compte que les caractères alphanumerques ([A
 
     "Rise to vote sir"
 
-## Devenez un agent secret, le codage de césar:
+## Devenez un agent secret, le chiffrement de césar:
 
-Le codage de césar est méthode simple de chiffrement ce basant sur la rotation des caractères. Ici nous voulons faire du Rot13, ainsi sur chacun des caractères de nôtre string nous appliquerons une rotation de 13:
+Le chiffrement de césar est méthode simple de chiffremenqui se base sur la rotation des caractères. Ici nous voulons faire du Rot13, ainsi sur chacun des caractès de notre string nous appliquerons une rotation de 13:
 Par exemple la string suivante:
 
     "Bonjour, j'aime le python"
@@ -41,7 +41,7 @@ Devient:
 
     "Obawbhe, w'nvzr yr clguba"
 
-Enfin pour déchiffrer rien de plus simple, il nous suffit juste d'appliquer à nouveau le chiffrement de césar.
+Enfin pour déchiffrer rien de plus simple, il nous suffit juste d'appliquer de nouveau le chiffrement de césar.
 
 Votre fonction de chiffrement devra avoir le prototype suivant:
 
