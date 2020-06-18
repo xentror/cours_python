@@ -18,7 +18,7 @@ frame.grid(row = 0, column = 0, sticky= tk.N + tk.S + tk.E + tk.W)
 
 colors = ["blue", "green", "red", "yellow" ]
 audio_path = ["audio1.mp3", "audio2.mp3", "audio3.mp3", "audio4.mp3"]
-buttons = [tk.Button(), tk.Button(), tk.Button(), tk.Button()]
+buttons = []
 
 cpt = 0
 for i in range(2):
@@ -27,10 +27,10 @@ for i in range(2):
 		path = audio_path[cpt]
 
 		tk.Grid.columnconfigure(frame, j, weight=1)
-		buttons[cpt] = tk.Button(master = frame, text="Play Me",
-								 bg=colors[cpt], fg="black",
-								 command = lambda p = path: handle_click(p),
-								 highlightthickness=0)
+		buttons.append(tk.Button(master = frame, text="Play Me",
+			 bg=colors[cpt], fg="black",
+			 command = lambda p = path: handle_click(p),
+			 highlightthickness=0))
 		buttons[cpt].grid(row = i, column = j, sticky = tk.N + tk.S + tk.E + tk.W, padx = 5, pady = 5)
 		cpt += 1
 
