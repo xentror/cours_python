@@ -91,6 +91,39 @@ x.start()
 Maintenant que nous avons un boutton qui fonctionne et qui lance notre son choisit, nous allons pouvoir en mettre autant que l'on veut.
 Pour cela nous avons plusieurs outils mis à dispositions par le module tkinter comme, pack, grid, place.
 
-Comme nous voulons que les bouttons se disposent en formant une grille et parce que je trouve que c'est la méthode la plus simple et la plus compréhensible.Nnous allons utiliser grid.
+Parceque nous voulons que les bouttons se disposent en formant une grille et que je trouve que c'est la méthode la plus simple et la plus compréhensible. Nous allons utiliser grid.
+
+L'outil grid permet d'afficher et d'organiser les éléments sous forme de grilles (quelle surprise !), pour celle il suffit de créer un élément d'appeler sa méthode grid comme suivant:
+
+```python
+button.grid(row = row_idx, column = column_idx, sticky = N + S + E + W, padx = 5, pady = 5)
+```
+
+Ici l'argument sticky va permettre de choisir comment l'élément va réagir quand la fenêtre s'agrandit ou se rétrécit. je vous laisse regarder sur internet pour plus de détail sur cette fonctionalité.
+
+Quand au paramètre pad il s'agit tout simplement du padding (donc de l'espace) horizontal et vertical entre cet élément et les autres.
+
+La méthode conseillé afin que le resize des éléments ce passe correctement est d'utiliser les fonctions **columnconfigure** et **rowconfigure**, de la façon suivante:
+
+```python
+tk.Grid.columnconfigure(window, index_elmt, weight = 1)
+tk.Grid.rowconfigure(window, index_elmt, weight = 1)
+```
+
+Pour cela je vous conseil de créer une frame avec comme index (0, 0) et de configurer les columns et lignes en utilisant les fonctions suivantes. Puis de créer des bouttons qui n'auront pas **window** comme master mais **frame**. (voir argument master à la création de l'élément).
+
+## Bonus:
+
+### Un vrai titre:
+
+Vous pouvez rajouter un vrai titre à votre application, ainsi qu'un petit message de bienvenue, c'est toujours plus conviviable.
+
+### Comment je sors de là ?
+
+Vous pouvez ajouter un boutton pour quitter de manière propre votre application, et qui arrêtera également tous les threads en cours d'exécutions.
+
+### Toc Toc Toc, c'est la police:
+
+Votre son est trop fort, et la police a été prévenu vous allez donc devoir baissez celui-ci. Or, vous avez la flemme de baissez le son sur votre ordinateur, si seulement il y a avait un slider pour le faire directement dans l'application.
 
 # BONNE CHANCE !!!
