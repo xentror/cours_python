@@ -7,15 +7,15 @@ entre les personnes ayant participé à des téléréalités
 françaises.
 
 Pour cela je me base sur le wiki fandom de la téléréalité:
-[link](https://tele-realite.fandom.com/fr/wiki/Wiki_T%C3%A9l%C3%A9_R%C3%A9alit%C3%A9)
+[tele-realite.fandom](https://tele-realite.fandom.com/fr/wiki/Wiki_T%C3%A9l%C3%A9_R%C3%A9alit%C3%A9)
 
 ## Usage:
 
 Le script va vous afficher le graphe sous format Dot. Pour le transformer en image vous
-pouvez utilise le programme dot du package 'graphviz'. Mais bien sûr cela va dépendre de
+pouvez utilise le programme dot du package `graphviz`. Mais bien sûr cela va dépendre de
 votre disbution et de votre OS.
 
-Vous devrez également avoir installé le module python 'requests'.
+Vous devrez également avoir installé le module python `requests`.
 Pour cela:
 
 ```bash
